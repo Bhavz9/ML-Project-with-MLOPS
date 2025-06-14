@@ -79,7 +79,12 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Debug Image URI
-        run: echo "Using image URI: ${{ secrets.AWS_ECR_LOGIN_URI }}/${{ secrets.ECR_REPOSITORY_NAME }}:latest"
+        run: |
+          echo "Using image URI: ${AWS_ECR_LOGIN_URI}/${ECR_REPOSITORY_NAME}:latest"
+        env:
+          AWS_ECR_LOGIN_URI: ${{ secrets.AWS_ECR_LOGIN_URI }}
+          ECR_REPOSITORY_NAME: ${{ secrets.ECR_REPOSITORY_NAME }}
+
 
       - name: Pull latest images
         run: |
