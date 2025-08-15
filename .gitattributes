@@ -1,0 +1,2 @@
+# Ignore CSS files in GitHub language stats
+*.css linguist-vendored
